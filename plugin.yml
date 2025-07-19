@@ -1,0 +1,8 @@
+name: KlanPlugin
+version: 1.0
+main: com.seninpaketin.Main
+api-version: 1.20
+commands:
+  seviye:
+    description: Seviyeni gösterir
+    usage: /seviye
