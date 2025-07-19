@@ -26,7 +26,7 @@ jobs:
           jar cvf YamanClan.jar -C out/classes . plugin.yml
 
       - name: Upload jar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: YamanClan
           path: YamanClan.jar
