@@ -16,14 +16,18 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Download Paper API
+        run: curl -o paper.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/1/downloads/paper-1.21.4-1.jar
+
       - name: Compile Plugin
         run: |
           mkdir -p out/classes
-          javac -classpath paper-1.21.4.jar -d out/classes $(find src -name "*.java")
-          jar cvf YamanClan.jar -C out/classes . plugin.yml
+          find src -name "*.java" > sources.txt
+          javac -classpath paper.jar -d out/classes @sources.txt
+          jar cf YamanClan.jar -C out/classes . plugin.yml
 
       - name: Upload jar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: YamanClan
           path: YamanClan.jar
