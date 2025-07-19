@@ -22,9 +22,8 @@ jobs:
       - name: Compile Plugin
         run: |
           mkdir -p out/classes
-          find src -name "*.java" > sources.txt
-          javac -classpath paper.jar -d out/classes @sources.txt
-          jar cf YamanClan.jar -C out/classes . plugin.yml
+          javac -classpath paper.jar -d out/classes $(find src -name "*.java")
+          jar cvf YamanClan.jar -C out/classes . plugin.yml
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
